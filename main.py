@@ -101,7 +101,7 @@ if __name__ == "__main__":
         systemInfo=None
     )
 
-    # Iterate through rows and query GPT
+    # Iterate through rows and query GPT ❤ RIP Daniel Naroditsky ❤
     #for entry in csvData:
     entry = csvData[1]
     print(f"\nProcessing: {entry["NL description"]}")
