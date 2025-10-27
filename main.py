@@ -128,7 +128,7 @@ if __name__ == "__main__":
     # Step 1: Gather all NL descriptions
     nl_descriptions = [entry["NL description"] for entry in csvData]
     ids = [entry["ID"] for entry in csvData]
-    ltl_fasits = [entry["LTL"] for entry in csvData]
+    ltl_references = [entry["LTL"] for entry in csvData]
 
     # Step 2: Generate all LTLs in one call
     batch_output = askgpt_generate_LTL_batch(nl_descriptions)
@@ -144,20 +144,20 @@ if __name__ == "__main__":
 
     # Step 5: Validate each generated LTL formula
     for idx, entry in enumerate(csvData):
-        fasit = ltl_fasits[idx]
+        reference = ltl_references[idx]
         generated = generated_formulas[idx]
 
         print(f"\nID: {ids[idx]}")
         print(f"NL description: {entry['NL description']}")
         print(f"Generated ptLTL: {generated}")
-        print(f"Fasit: {fasit}")
+        print(f"Reference: {reference}")
 
         # Run semantic equivalence check
-        result2 = askgpt_LTL_trueVfalse(generated, fasit)
+        result2 = askgpt_LTL_trueVfalse(generated, reference)
 
         results.append({
             "ID": ids[idx],
-            "ptLTL": fasit,
+            "ptLTL": reference,
             "Generated ptLTL": generated,
             "Equivalence Check": result2
         })
