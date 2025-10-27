@@ -122,22 +122,45 @@ if __name__ == "__main__":
 
     csvData = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
 
-    # Iterate through rows and query GPT 
+    # --- Batch processing with LTL generation and validation ---
     results = []
-    for entry in csvData:
-        print(f"\nProcessing: {entry["NL description"]}")
-        result = askgpt_generate_LTL(entry["NL description"])
-        print(f"LTL Fasit: {entry["LTL"]}")
-        result2 = askgpt_LTL_trueVfalse(result, entry["LTL"])
-        
-        # Store result
-        results.append(
-        {
-            "ID": entry["ID"],
-            "ptLTL": entry["LTL"],
-            "Generated ptLTL": result,
+
+    # Step 1: Gather all NL descriptions
+    nl_descriptions = [entry["NL description"] for entry in csvData]
+    ids = [entry["ID"] for entry in csvData]
+    ltl_fasits = [entry["LTL"] for entry in csvData]
+
+    # Step 2: Generate all LTLs in one call
+    batch_output = askgpt_generate_LTL_batch(nl_descriptions)
+
+    # Step 3: Split batch output into lines (each should match one NL description)
+    generated_formulas = [line.strip() for line in batch_output.split("\n") if line.strip()]
+
+    # Step 4: Handle mismatched counts safely
+    if len(generated_formulas) != len(csvData):
+        print(f"⚠️ Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
+        # pad or truncate
+        generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
+
+    # Step 5: Validate each generated LTL formula
+    for idx, entry in enumerate(csvData):
+        fasit = ltl_fasits[idx]
+        generated = generated_formulas[idx]
+
+        print(f"\nID: {ids[idx]}")
+        print(f"NL description: {entry['NL description']}")
+        print(f"Generated ptLTL: {generated}")
+        print(f"Fasit: {fasit}")
+
+        # Run semantic equivalence check
+        result2 = askgpt_LTL_trueVfalse(generated, fasit)
+
+        results.append({
+            "ID": ids[idx],
+            "ptLTL": fasit,
+            "Generated ptLTL": generated,
             "Equivalence Check": result2
         })
 
-    # Save entry["ID"], entry["LTL"], result, result2 to a new CSV or data structure
+    # Step 6: Save results to CSV
     csvHandler.save_results_to_csv(results)
