@@ -43,9 +43,11 @@ def check_equivalence_master(formula1, formula2):
         os.remove(tmp_path)
 
 
-# Example usage
-f1 = "H((classifier = trained & dgt_7) -> (OpState = 1))"
-f2 = "H((classifier = trained) -> (dgt_7 -> (OpState = 1)))"
+if __name__ == "__main__":
 
-equiv = check_equivalence_master(f1, f2)
-print("\nEquivalent:", equiv)
+    # Example usage
+    f1 = "H((classifier = trained & dgt_7) -> (OpState = 1))"
+    f2 = "H((classifier = trained) -> (dgt_7 -> (OpState = 1)))"
+
+    equiv = check_equivalence_master(f1, f2)
+    print("\nEquivalent:", equiv)
