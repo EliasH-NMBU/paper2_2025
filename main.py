@@ -1,5 +1,6 @@
 from openai import OpenAI
 import csvHandler
+import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try "gpt-5-chat-latest" if Pro access isn’t enabled
 client = OpenAI()
@@ -153,7 +154,7 @@ if __name__ == "__main__":
         print(f"Reference: {reference}")
 
         # Run semantic equivalence check
-        result2 = askgpt_LTL_trueVfalse(generated, reference)
+        result2 = nuXmvHandler.check_equivalence_master(generated, reference)
 
         results.append({
             "ID": ids[idx],
