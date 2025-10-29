@@ -2,33 +2,50 @@ import subprocess
 import tempfile
 import os
 
-def run_nuxmv(model_text: str):
-    # Create a temporary .smv file
+
+def check_equivalence_master(formula1, formula2):
+    
+    model = f"""
+    MODULE main
+    VAR
+    classifier : {{none, trained, untrained}};
+    dgt_3 : boolean;
+    dgt_7 : boolean;
+    distance_to_target : 0..10;
+    OpState : 0..3;
+
+    LTLSPEC ({formula1}) <-> ({formula2})
+    """
+
     with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w") as tmp:
-        tmp.write(model_text)
+        tmp.write(model)
         tmp_path = tmp.name
 
     try:
-        # Run NuXMV on the temp file
         result = subprocess.run(
             ["nuxmv.exe", tmp_path],
             capture_output=True,
             text=True,
             timeout=30
         )
-        return result.stdout
+
+        output = result.stdout
+        print(output)
+
+        if "is true" in output:
+            return True
+        elif "is false" in output:
+            return False
+        else:
+            return None
+        
     finally:
         os.remove(tmp_path)
 
-# Example: a small SMV model with an LTL property
-model = """
-MODULE main
-VAR
-  x : boolean;
-  y : boolean;
 
-LTLSPEC H (x -> y)
-"""
+# Example usage
+f1 = "H((classifier = trained & dgt_7) -> (OpState = 1))"
+f2 = "H((classifier = trained) -> (dgt_7 -> (OpState = 1)))"
 
-output = run_nuxmv(model)
-print(output)
+equiv = check_equivalence_master(f1, f2)
+print("\nEquivalent:", equiv)
