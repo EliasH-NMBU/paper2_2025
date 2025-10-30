@@ -1,0 +1,131 @@
+Summary,ID,ptLTL,Generated ptLTL,Equivalence Check
+1/1,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+1/1,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+1/1,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+1/1,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+1/1,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/1,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+1/1,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+1/1,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+1/1,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+1/1,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+1/1,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+1/1,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+1/1,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+2/2,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+2/2,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+2/2,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+2/2,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+2/2,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/2,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+2/2,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+2/2,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+2/2,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+2/2,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+2/2,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+2/2,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+2/2,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+3/3,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+3/3,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+3/3,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+3/3,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+3/3,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/3,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+3/3,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+3/3,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+3/3,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+3/3,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+3/3,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+3/3,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+3/3,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+4/4,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+4/4,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+4/4,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+4/4,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+4/4,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/4,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+4/4,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+4/4,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+4/4,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+4/4,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+4/4,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+4/4,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+4/4,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+5/5,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+5/5,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+5/5,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+5/5,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+5/5,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/5,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+5/5,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+5/5,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+5/5,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+5/5,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+5/5,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+5/5,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+5/5,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+6/6,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+6/6,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+6/6,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+6/6,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+6/6,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/6,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+6/6,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+6/6,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+6/6,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+6/6,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+6/6,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+6/6,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+6/6,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+7/7,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+7/7,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+7/7,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+7/7,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+7/7,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/7,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+7/7,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+7/7,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+7/7,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+7/7,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+7/7,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+7/7,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+7/7,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+8/8,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+8/8,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+8/8,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+8/8,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+8/8,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/8,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+8/8,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+8/8,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+8/8,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+8/8,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+8/8,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+8/8,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+8/8,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+9/9,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+9/9,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+9/9,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+9/9,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+9/9,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/9,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+9/9,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+9/9,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+9/9,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+9/9,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+9/9,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+9/9,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+9/9,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True
+10/10,classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),True
+10/10,dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H(((classifier = 1 ∨ classifier = 2) → distance_to_target ≥ 0)),True
+10/10,operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+10/10,operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+10/10,operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+0/10,operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+10/10,state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),True
+10/10,state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1 ∧ dgt_7) → (OpState = 1))),True
+10/10,state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2))),True
+10/10,state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1 ∧ ¬dgt_3) → (OpState = 3))),True
+10/10,state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2 ∧ dgt_7) → (OpState = 2))),True
+10/10,state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3))),True
+10/10,state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2 ∧ ¬dgt_3) → (OpState = 3))),True

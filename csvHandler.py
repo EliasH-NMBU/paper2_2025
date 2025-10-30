@@ -61,7 +61,7 @@ def save_results_to_csv(results, output_path=None):
     if output_path is None:
         output_path = f"results/{date_str}_ptLTL_results.csv"
 
-    fieldnames = ["ID", "ptLTL", "Generated ptLTL", "Equivalence Check"]
+    fieldnames = ["Summary", "ID", "ptLTL", "Generated ptLTL", "Equivalence Check"]
 
     with open(output_path, mode="w", newline='', encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
