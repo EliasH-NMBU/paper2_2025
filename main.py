@@ -4,44 +4,9 @@ import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
 NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
-TEMPERATURE = 0  # Adjust temperature for variability in responses, TODO: currently unused
-
+TEMPERATURE = 0  # Adjust temperature for variability in responses
 
 client = OpenAI()
-
-
-def askgpt_generate_LTL(nlprompt: str):
-    
-    variableTableInfo = csvHandler.get_master_variable_table_info() # Adjust path as needed
-
-    system_prompt = (
-        "Answer strictly with only the past time LTL formula.\n"
-        "You are an expert in formal methods and temporal logic. "
-        "Your task is to translate natural language requirements into **past-time linear temporal logic (ptLTL)** formulas.\n\n"
-        "Use only ptLTL operators:\n"
-        "- H φ: 'Historically φ' (φ has always been true in the past)\n"
-        "- O φ: 'Once φ' (φ was true at least once in the past)\n"
-        "- Y φ: 'Yesterday φ' (φ was true at the immediately previous step)\n"
-        "- φ S ψ: 'φ Since ψ' (ψ was true at some point in the past and φ has been true since then)\n\n"
-        "Avoid using standard LTL future-time operators such as G, F, X, U, or □.\n"
-        "Use the following variable mapping to understand system variables:\n"
-        f"{variableTableInfo}\n"
-    )
-
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": nlprompt}
-    ]
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=messages,
-        max_completion_tokens=500
-    )
-
-    msg = response.choices[0].message.content.strip()
-    print(f"LTL Result: {msg}")
-    return msg
 
 
 def askgpt_generate_LTL_batch(nl_descriptions):
@@ -53,11 +18,6 @@ def askgpt_generate_LTL_batch(nl_descriptions):
         "into its corresponding past-time LTL (ptLTL) formula.\n\n"
         "Return only the formulas, one per line, in the same order.\n"
         "Do not include any numbering, explanations, or LaTeX syntax.\n\n"
-        "Use only ptLTL operators:\n"
-        "- H φ: 'Historically φ'\n"
-        "- O φ: 'Once φ'\n"
-        "- Y φ: 'Yesterday φ'\n"
-        "- φ S ψ: 'φ Since ψ'\n\n"
         f"Variable mapping:\n{variableTableInfo}\n\n"
     )
 
@@ -81,44 +41,11 @@ def askgpt_generate_LTL_batch(nl_descriptions):
         model=MODEL,
         messages=messages,
         max_completion_tokens=3000,
-        temperature=0 # maybe change later
+        temperature=TEMPERATURE # maybe change later
     )
 
     msg = response.choices[0].message.content.strip()
     # print(f"LTL Batch Result: {msg}")
-    return msg
-
-
-def askgpt_LTL_trueVfalse(prompt1: str, prompt2: str):
-    
-    base_messages = [{"role": "system", "content": 
-        (
-        "You are an expert in formal verification using **past-time linear temporal logic (ptLTL)**. "
-        "Your task is to check whether two ptLTL formulas are *semantically equivalent* — not just syntactically similar.\n\n"
-        "Use strict semantics:\n"
-        "- `H φ` (Historically φ): means φ has been true at **all** previous time points.\n"
-        "- `O φ` (Once φ): means φ was true at **least one** previous time point.\n"
-        "- Therefore, `H φ` is **stronger** than `O φ` — they are **not equivalent**.\n"
-        "- Similarly, check for differences between future-time and past-time operators (G vs H, F vs O, etc.).\n\n"
-        "When comparing two formulas:\n"
-        "1. If one formula uses a past operator (H, O, Y, S) and the other uses a future operator (G, F, X, U), respond 'False'.\n"
-        "2. If one uses 'H' and the other 'O' around the same condition, respond 'False'.\n"
-        "3. Only answer 'True' if the two formulas are **semantically identical** — not merely similar.\n\n"
-        "Answer strictly with only 'True' or 'False'. Do not provide explanations."
-        )
-    }]
-
-    merged_prompt = f"Expression 1: {prompt1}\nExpression 2: {prompt2}"
-
-    messages = base_messages + [{"role": "user", "content": merged_prompt}]
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=messages,
-        max_completion_tokens=100
-    )
-
-    msg = response.choices[0].message.content.strip()
-    print(f"Equivalence Check: {msg}")
     return msg
 
 
