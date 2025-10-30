@@ -3,6 +3,7 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try "gpt-5-chat-latest" if Pro access isn’t enabled
+NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
 client = OpenAI()
 
 
@@ -131,38 +132,40 @@ if __name__ == "__main__":
     ids = [entry["ID"] for entry in csvData]
     ltl_references = [entry["LTL"] for entry in csvData]
 
-    # Step 2: Generate all LTLs in one call
-    batch_output = askgpt_generate_LTL_batch(nl_descriptions)
+    # Iteration Loop
+    for _ in range(NUM_ITERATIONS):    
 
-    # Step 3: Split batch output into lines (each should match one NL description)
-    generated_formulas = [line.strip() for line in batch_output.split("\n") if line.strip()]
+        # Step 2: Generate all LTLs in one call
+        batch_output = askgpt_generate_LTL_batch(nl_descriptions)
 
-    # Step 4: Handle mismatched counts safely
-    if len(generated_formulas) != len(csvData):
-        print(f"⚠️ Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
-        # pad or truncate
-        generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
+        # Step 3: Split batch output into lines (each should match one NL description)
+        generated_formulas = [line.strip() for line in batch_output.split("\n") if line.strip()]
 
-    # Step 5: Validate each generated LTL formula
-    for idx, entry in enumerate(csvData):
-        reference = ltl_references[idx]
-        generated = generated_formulas[idx]
+        # Step 4: Handle mismatched counts safely
+        if len(generated_formulas) != len(csvData):
+            print(f"⚠️ Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
+            generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
 
-        # Run semantic equivalence check
-        result2 = nuXmvHandler.check_equivalence_master(generated, reference)
+        # Step 5: Validate each generated LTL formula
+        for idx, entry in enumerate(csvData):
+            reference = ltl_references[idx]
+            generated = generated_formulas[idx]
 
-        results.append({
-            "ID": ids[idx],
-            "ptLTL": reference,
-            "Generated ptLTL": generated,
-            "Equivalence Check": result2
-        })
+            # Run semantic equivalence check
+            result2 = nuXmvHandler.check_equivalence_master(generated, reference)
 
-        print(f"\nID: {ids[idx]}")
-        print(f"NL description: {entry['NL description']}")
-        print(f"Generated ptLTL: {generated}")
-        print(f"Reference: {reference}")
-        print(f"Equivalence Check: {result2}")
+            results.append({
+                "ID": ids[idx],
+                "ptLTL": reference,
+                "Generated ptLTL": generated,
+                "Equivalence Check": result2
+            })
 
-    # Step 6: Save results to CSV
-    csvHandler.save_results_to_csv(results)
+            print(f"\nID: {ids[idx]}")
+            print(f"NL description: {entry['NL description']}")
+            print(f"Generated ptLTL: {generated}")
+            print(f"Reference: {reference}")
+            print(f"Equivalence Check: {result2}")
+
+        # Step 6: Save results to CSV
+        csvHandler.save_results_to_csv(results)
