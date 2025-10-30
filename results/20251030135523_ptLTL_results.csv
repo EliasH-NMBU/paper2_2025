@@ -1,0 +1,14 @@
+ID,ptLTL,Generated ptLTL,Equivalence Check
+classifier_assumption,(H (((classifier = 0) xor (classifier = 1)) xor (classifier = 2))),H(classifier = 0 ∨ classifier = 1 ∨ classifier = 2),False
+dtt assumption,(H ((! (classifier = 0)) -> (distance_to_target >= 0))),H((classifier ≠ 0) → (distance_to_target ≥ 0)),False
+operationalstate_0,(H ((OpState = 0) -> ((((! slowdown) & (! halt)) & (! alert)) & (! turnoffUVC)))),H((OpState = 0) → (¬slowdown ∧ ¬halt ∧ ¬alert ∧ ¬turnoffUVC)),True
+operationalstate_1,(H ((OpState = 1) -> ((((! slowdown) & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 1) → (alert ∧ ¬slowdown ∧ ¬halt ∧ ¬turnoffUVC)),True
+operationalstate_2,(H ((OpState = 2) -> (((slowdown & (! halt)) & alert) & (! turnoffUVC)))),H((OpState = 2) → (slowdown ∧ alert ∧ ¬halt ∧ ¬turnoffUVC)),True
+operationalstate_3,(H ((OpState = 3) -> ((((! slowdown) & halt) & alert) & turnoffUVC))),H((OpState = 3) → (halt ∧ turnoffUVC ∧ ¬slowdown ∧ ¬alert)),False
+state_req000,(H ((classifier = 0) -> (OpState = 0))),H((classifier = 0) → (OpState = 0)),False
+state_req101,(H ((classifier = 1) -> (dgt_7 -> (OpState = 1)))),H(((classifier = 1) ∧ dgt_7) → (OpState = 1)),False
+state_req102,(H ((classifier = 1) -> (((! dgt_7) & dgt_3) -> (OpState = 2)))),H(((classifier = 1) ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 2)),False
+state_req103,(H ((classifier = 1) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 1) ∧ ¬dgt_3) → (OpState = 3)),False
+state_req201,(H ((classifier = 2) -> (dgt_7 -> (OpState = 2)))),H(((classifier = 2) ∧ dgt_7) → (OpState = 2)),False
+state_req202,(H ((classifier = 2) -> (((! dgt_7) & dgt_3) -> (OpState = 3)))),H(((classifier = 2) ∧ ¬dgt_7 ∧ dgt_3) → (OpState = 3)),False
+state_req203,(H ((classifier = 2) -> ((! dgt_3) -> (OpState = 3)))),H(((classifier = 2) ∧ ¬dgt_3) → (OpState = 3)),False
