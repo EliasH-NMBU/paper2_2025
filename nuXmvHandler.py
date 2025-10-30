@@ -14,6 +14,7 @@ def check_equivalence_master(formula1, formula2):
                 .replace("≥", ">=")
                 .replace("≤", "<=")
                 .replace("=", "=")
+                .replace("≠", "!=")
                 )
 
     f1 = normalize(formula1)

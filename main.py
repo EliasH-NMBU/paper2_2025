@@ -148,11 +148,6 @@ if __name__ == "__main__":
         reference = ltl_references[idx]
         generated = generated_formulas[idx]
 
-        print(f"\nID: {ids[idx]}")
-        print(f"NL description: {entry['NL description']}")
-        print(f"Generated ptLTL: {generated}")
-        print(f"Reference: {reference}")
-
         # Run semantic equivalence check
         result2 = nuXmvHandler.check_equivalence_master(generated, reference)
 
@@ -162,6 +157,12 @@ if __name__ == "__main__":
             "Generated ptLTL": generated,
             "Equivalence Check": result2
         })
+
+        print(f"\nID: {ids[idx]}")
+        print(f"NL description: {entry['NL description']}")
+        print(f"Generated ptLTL: {generated}")
+        print(f"Reference: {reference}")
+        print(f"Equivalence Check: {result2}")
 
     # Step 6: Save results to CSV
     csvHandler.save_results_to_csv(results)
