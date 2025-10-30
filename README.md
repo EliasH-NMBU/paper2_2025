@@ -80,3 +80,6 @@ LTL Fasit: (H ((! (classifier = 0)) -> (distance_to_target >= 0)))
 
 Equivalence Check: False
 
+
+<img width="1142" height="322" alt="bilde" src="https://github.com/user-attachments/assets/c412efdf-12f4-4d97-85a2-c9e434e2fd2d" />
+30.10.2025
