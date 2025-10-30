@@ -38,15 +38,15 @@ def get_master_variable_table_info():
     return (
         "Variable Mapping Table:\n"
         "------------------------\n"
-        "Alert (Output, boolean): Mitigation to sound an alert under determined condition.\n"
-        "Classifier (Input, integer): Identification variable for human detected by system. 0 = None, 1 = worker, 2 = untrained person\n"
+        "alert (Output, boolean): Mitigation to sound an alert under determined condition.\n"
+        "classifier (Input, integer): Identification variable for human detected by system. 0 = None, 1 = worker, 2 = untrained person\n"
         "dgt_3 (Internal, boolean): Critical threshold in distance (3 meters).\n"
         "dgt_7 (Internal, boolean): Critical threshold in distance (7 meters).\n"
         "distance_to_target (Input, integer): Distance to identified human in meters.\n"
-        "Halt (Output, boolean): Mitigation to stop the robot.\n"
+        "halt (Output, boolean): Mitigation to stop the robot.\n"
         "OpState (Output, integer): Current active mitigation state. From 0 to 3\n"
-        "Slowdown (Output, boolean): Mitigation to slow down the robot.\n"
-        "TurnoffUVC (Output, boolean): Mitigation to turn off UV lights.\n"
+        "slowdown (Output, boolean): Mitigation to slow down the robot.\n"
+        "turnoffUVC (Output, boolean): Mitigation to turn off UV lights.\n"
     )
 
 

@@ -1,5 +1,6 @@
 from openai import OpenAI
 import csvHandler
+import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try "gpt-5-chat-latest" if Pro access isn’t enabled
 client = OpenAI()
@@ -147,13 +148,8 @@ if __name__ == "__main__":
         reference = ltl_references[idx]
         generated = generated_formulas[idx]
 
-        print(f"\nID: {ids[idx]}")
-        print(f"NL description: {entry['NL description']}")
-        print(f"Generated ptLTL: {generated}")
-        print(f"Reference: {reference}")
-
         # Run semantic equivalence check
-        result2 = askgpt_LTL_trueVfalse(generated, reference)
+        result2 = nuXmvHandler.check_equivalence_master(generated, reference)
 
         results.append({
             "ID": ids[idx],
@@ -161,6 +157,12 @@ if __name__ == "__main__":
             "Generated ptLTL": generated,
             "Equivalence Check": result2
         })
+
+        print(f"\nID: {ids[idx]}")
+        print(f"NL description: {entry['NL description']}")
+        print(f"Generated ptLTL: {generated}")
+        print(f"Reference: {reference}")
+        print(f"Equivalence Check: {result2}")
 
     # Step 6: Save results to CSV
     csvHandler.save_results_to_csv(results)
