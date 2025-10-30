@@ -2,8 +2,11 @@ from openai import OpenAI
 import csvHandler
 import nuXmvHandler
 
-MODEL = "gpt-5-chat-latest"  # You can also try "gpt-5-chat-latest" if Pro access isn’t enabled
+MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5-chat-latest" "gpt-5-reasoning"
 NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
+TEMPERATURE = 0  # Adjust temperature for variability in responses, TODO: currently unused
+
+
 client = OpenAI()
 
 
@@ -82,7 +85,7 @@ def askgpt_generate_LTL_batch(nl_descriptions):
     )
 
     msg = response.choices[0].message.content.strip()
-    print(f"LTL Batch Result: {msg}")
+    # print(f"LTL Batch Result: {msg}")
     return msg
 
 
@@ -131,9 +134,11 @@ if __name__ == "__main__":
     nl_descriptions = [entry["NL description"] for entry in csvData]
     ids = [entry["ID"] for entry in csvData]
     ltl_references = [entry["LTL"] for entry in csvData]
+    success_counts = {id_: 0 for id_ in ids}
 
     # Iteration Loop
-    for _ in range(NUM_ITERATIONS):    
+    for iteration in range(NUM_ITERATIONS):    
+        print(f"\n🔁 Iteration {iteration + 1}/{NUM_ITERATIONS}")
 
         # Step 2: Generate all LTLs in one call
         batch_output = askgpt_generate_LTL_batch(nl_descriptions)
@@ -153,19 +158,19 @@ if __name__ == "__main__":
 
             # Run semantic equivalence check
             result2 = nuXmvHandler.check_equivalence_master(generated, reference)
+           
+           # Increment true count
+            if result2 is True:
+                success_counts[ids[idx]] += 1
 
+            # Store results
             results.append({
+                "Summary": f"{success_counts[ids[idx]]}/{iteration + 1}",
                 "ID": ids[idx],
                 "ptLTL": reference,
                 "Generated ptLTL": generated,
                 "Equivalence Check": result2
             })
 
-            print(f"\nID: {ids[idx]}")
-            print(f"NL description: {entry['NL description']}")
-            print(f"Generated ptLTL: {generated}")
-            print(f"Reference: {reference}")
-            print(f"Equivalence Check: {result2}")
-
-        # Step 6: Save results to CSV
-        csvHandler.save_results_to_csv(results)
+    # Step 6: Save results to CSV
+    csvHandler.save_results_to_csv(results)
