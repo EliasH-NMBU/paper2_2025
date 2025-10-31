@@ -3,22 +3,21 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 100 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
+VARIABLETABLE = csvHandler.get_master_variable_table_info() # Adjust path as needed
 
 client = OpenAI()
 
 
 def askgpt_generate_LTL_batch(nl_descriptions):
     
-    variableTableInfo = csvHandler.get_master_variable_table_info() # Adjust path as needed
-
     combined_prompt = (
         "Translate each of the following natural-language requirements "
         "into its corresponding past-time LTL (ptLTL) formula.\n\n"
         "Return only the formulas, one per line, in the same order.\n"
         "Do not include any numbering, explanations, or LaTeX syntax.\n\n"
-        f"Variable mapping:\n{variableTableInfo}\n\n"
+        f"Variable mapping:\n{VARIABLETABLE}\n\n"
     )
 
     for i, desc in enumerate(nl_descriptions, 1):
@@ -83,18 +82,23 @@ if __name__ == "__main__":
             reference = ltl_references[idx]
             generated = generated_formulas[idx]
 
-            # Run semantic equivalence check
-            result2 = nuXmvHandler.check_equivalence_master(generated, reference)
+            # Default if no reference
+            result2 = "N/A"
+
+            if reference and reference.strip():
+
+                # Run semantic equivalence check
+                result2 = nuXmvHandler.check_equivalence_master(generated, reference)
            
-           # Increment true count
-            if result2 is True:
-                success_counts[ids[idx]] += 1
+                # Increment true count
+                if result2 is True:
+                    success_counts[ids[idx]] += 1
 
             # Store results
             results.append({
                 "Summary": f"{success_counts[ids[idx]]}/{iteration + 1}",
                 "ID": ids[idx],
-                "ptLTL": reference,
+                "ptLTL": reference if reference else "None",
                 "Generated ptLTL": generated,
                 "Equivalence Check": result2
             })
