@@ -13,7 +13,7 @@ def load_and_validate_csv(filepath: str):
         raise FileNotFoundError(f"File not found: {filepath}") 
 
     with open(filepath, newline='', encoding='utf-8-sig') as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, delimiter=';')
 
         # Normalize header names (strip spaces, handle BOM)
         headers = [h.strip() for h in reader.fieldnames or []]
@@ -40,13 +40,48 @@ def get_master_variable_table_info():
         "------------------------\n"
         "alert (Output, boolean): Mitigation to sound an alert under determined condition.\n"
         "classifier (Input, integer): Identification variable for human detected by system. 0 = None, 1 = worker, 2 = untrained person\n"
-        "dgt_3 (Internal, boolean): Critical threshold in distance (3 meters).\n"
-        "dgt_7 (Internal, boolean): Critical threshold in distance (7 meters).\n"
+        "dgt_3 (Internal, boolean): distance greater than 3 meters.\n"
+        "dgt_7 (Internal, boolean): distance greater than 7 meters.\n"
         "distance_to_target (Input, integer): Distance to identified human in meters.\n"
         "halt (Output, boolean): Mitigation to stop the robot.\n"
         "OpState (Output, integer): Current active mitigation state. From 0 to 3\n"
         "slowdown (Output, boolean): Mitigation to slow down the robot.\n"
         "turnoffUVC (Output, boolean): Mitigation to turn off UV lights.\n"
+    )
+
+
+def get_lung_ventilator_variable_table_info():
+
+    return (
+        "Variable Mapping Table:\n"
+        "------------------------\n"
+        "ADCConnFailure (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
+        "ADCError (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "ADCRetries (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "BreathingCycleStart (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "Controller (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
+        "ExpiratoryPhaseEnd (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "ExpiratoryTime (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "ExpiratoryTriggerSensitivity (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "FailSafeMode (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "FinalState (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "GBPS (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "GUIConnected (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
+        "GUIFailure (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "GUIResumeRequest (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "PressureSensor (Input, integer): Automatically inferred variable from FRETish specification.\n"
+        "FlowSensor (Input, integer): Automatically inferred variable from FRETish specification.\n"
+        "VentValve (Output, boolean): Automatically inferred variable from FRETish specification.\n"
+        "Alarm (Output, boolean): Automatically inferred variable from FRETish specification.\n"
+        "OxygenLevel (Input, integer): Automatically inferred variable from FRETish specification.\n"
+        "AirSupply (Output, boolean): Automatically inferred variable from FRETish specification.\n"
+        "BreathCount (Internal, integer): Automatically inferred variable from FRETish specification.\n"
+        "InspiratoryPhase (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
+        "ExpiratoryPhase (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
+        "TargetPressure (Input, integer): Automatically inferred variable from FRETish specification.\n"
+        "PatientDetected (Input, boolean): Automatically inferred variable from FRETish specification.\n"
+        "PowerButton (Input, boolean): Automatically inferred variable from FRETish specification.\n"
+        "SystemOn (Internal, boolean): Automatically inferred variable from FRETish specification.\n"
     )
 
 
