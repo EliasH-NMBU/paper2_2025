@@ -3,11 +3,15 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 2 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
 
-VARIABLETABLE = csvHandler.get_master_variable_table_info() # Adjust path as needed
-CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
+#VARIABLETABLE = csvHandler.get_master_variable_table_info() # Adjust path as needed
+#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
+
+VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info() # Adjust path as needed
+CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv") # Adjust path as needed
+
 
 client = OpenAI()
 
