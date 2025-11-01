@@ -3,9 +3,11 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 2 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
+
 VARIABLETABLE = csvHandler.get_master_variable_table_info() # Adjust path as needed
+CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
 
 client = OpenAI()
 
@@ -51,7 +53,7 @@ def askgpt_generate_LTL_batch(nl_descriptions):
 # Main execution
 if __name__ == "__main__":
 
-    csvData = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
+    csvData = CSVDATA
 
     # --- Batch processing with LTL generation and validation ---
     results = []

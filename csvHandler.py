@@ -13,7 +13,7 @@ def load_and_validate_csv(filepath: str):
         raise FileNotFoundError(f"File not found: {filepath}") 
 
     with open(filepath, newline='', encoding='utf-8-sig') as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, delimiter=';')
 
         # Normalize header names (strip spaces, handle BOM)
         headers = [h.strip() for h in reader.fieldnames or []]
