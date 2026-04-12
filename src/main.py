@@ -4,9 +4,9 @@ import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
 SPEC = "UV_nuXmvTest"
-NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 10 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_rover
 
 
 ### Load CSV data and variable table
@@ -22,8 +22,8 @@ EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
 #VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
 
-VARIABLETABLE = csvHandler.get_master_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+VARIABLETABLE = csvHandler.get_rover_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
 ###
 
 
@@ -48,11 +48,11 @@ def askgpt_generate_LTL_batch(nl_descriptions):
         {"role": "system", "content": ("You are an expert in formal methods and temporal logic. "
             "Your task is to translate natural language requirements into **past-time linear temporal logic (ptLTL)** formulas.\n\n"
             "Use only ptLTL operators:\n"
-            "- H φ: 'Historically φ' (φ has always been true in the past)\n"
+            "- G φ: 'Globally φ' (φ has always been true in the past)\n"
             "- O φ: 'Once φ' (φ was true at least once in the past)\n"
             "- Y φ: 'Yesterday φ' (φ was true at the immediately previous step)\n"
             "- φ S ψ: 'φ Since ψ' (ψ was true at some point in the past and φ has been true since then)\n\n"
-            "Avoid using standard LTL future-time operators such as G, F, X, U, or □.\n"
+            "Avoid using standard LTL future-time operators such as F, X, U, or □.\n"
             )},
         {"role": "user", "content": combined_prompt}
     ]

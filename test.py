@@ -4,29 +4,8 @@ import os
 import re
 import unicodedata
 
-f1 = ""
-f2 = ""
 
-model = f"""
-    MODULE main
 
-    IVAR
-      classifier : {{0, 1, 2}};
-      distance_to_target : 0..10;
-
-    VAR
-      alert : boolean;
-      halt : boolean;
-      slowdown : boolean;
-      turnoffUVC : boolean;
-      OpState : {{0, 1, 2, 3}};
-
-    DEFINE
-      dgt_3 := distance_to_target > 3;
-      dgt_7 := distance_to_target > 7;
-
-    LTLSPEC ({f1}) <-> ({f2})
-    """
 
 
 def responseHandler(model, f1, f2):
@@ -70,7 +49,28 @@ def responseHandler(model, f1, f2):
     
 
 if __name__ == "__main__":
-    f1 = "G (dgt_3)"
-    f2 = "G (distance_to_target > 3)"
+    f1 = "G (distance_to_target > 3)"
+    f2 = "(distance_to_target > 3)"
+
+    model = f"""
+        MODULE main
+
+        IVAR
+        classifier : {{0, 1, 2}};
+        distance_to_target : 0..10;
+
+        VAR
+        alert : boolean;
+        halt : boolean;
+        slowdown : boolean;
+        turnoffUVC : boolean;
+        OpState : {{0, 1, 2, 3}};
+
+        DEFINE
+        dgt_3 := distance_to_target > 3;
+        dgt_7 := distance_to_target > 7;
+
+        LTLSPEC ({f1}) <-> ({f2})"""
+
     result = responseHandler(model, f1, f2)
     print("Equivalence Result:", result)
