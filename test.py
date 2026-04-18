@@ -49,8 +49,8 @@ def responseHandler(model, f1, f2):
     
 
 if __name__ == "__main__":
-    f1 = "G (distance_to_target > 3)"
-    f2 = "(distance_to_target > 3)"
+    f1 = "(G ((! (classifier = 0)) -> (distance_to_target >= 0)))"
+    f2 = "G ((classifier != 0) -> (distance_to_target >= 0))"
 
     model = f"""
         MODULE main
