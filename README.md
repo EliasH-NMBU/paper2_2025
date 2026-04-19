@@ -1,4 +1,4 @@
-## 2nd paper, LLMs capabilities of generating Copilot formally  verified specifications/requirements/monitors.
+## 2nd paper, LLMs capabilities of generating ptLTL, formally  verified specifications/requirements/monitors.
 
 Refactoring and clean up of code has not been performed as of yet.
 
