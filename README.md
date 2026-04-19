@@ -24,7 +24,7 @@ To FRET, To Copilot, or through both
 ### Methodology
 
 <p align="center">
-<img width="512" height="768" align="center" alt="bilde" src="https://github.com/user-attachments/assets/7f77a677-dcb4-4464-9cc8-48a14e30e104" />
+<img width="512" height="768" align="center" alt="bilde" src="workflow.png" />
 </p>
 
 
