@@ -29,7 +29,8 @@ def normalize(f: str) -> str:
         "∧": "&",
         "∨": "|",
         "&&": "&",
-        "||": "|"
+        "||": "|",
+        "≠": "!=",
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
