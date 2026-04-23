@@ -3,11 +3,11 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-SPEC = "UV_tempTest"
-NUM_ITERATIONS = 100 # Number of iterations for the entire batch process
-TEMPERATURE = 0.1  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
-
+SPEC = "Mars_tempTest"
+NUM_ITERATIONS = 50 # Number of iterations for the entire batch process
+TEMPERATURE = 0  # Adjust temperature for variability in responses
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_rover
+    
 
 
 
@@ -24,8 +24,8 @@ EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
 #VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
 
-VARIABLETABLE = csvHandler.get_master_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+VARIABLETABLE = csvHandler.get_rover_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
 ###
 
 

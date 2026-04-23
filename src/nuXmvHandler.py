@@ -81,6 +81,24 @@ def responseHandler(model, f1, f2):
         return 
 
 
+def check_equivalence_ltl(formula1, formula2):
+
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    model = f"""
+    MODULE main
+    VAR
+        RES : boolean;
+        CONDITION_EXP : boolean;
+        MODE_EXP : boolean;
+        STOP_CONDITION : boolean;
+
+    LTLSPEC !( ({f1}) <-> ({f2}) )
+    """
+    return responseHandler(model, f1, f2)   
+
+
 def check_equivalence_master(formula1, formula2):
     
     f1 = normalize(formula1)

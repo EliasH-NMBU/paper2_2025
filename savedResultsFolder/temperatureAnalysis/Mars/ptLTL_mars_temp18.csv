@@ -1,0 +1,451 @@
+Summary,ID,ptLTL,Generated ptLTL,Equivalence Check
+1/1,R1,(G (battery > 0)),G(battery > 0),True
+1/1,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+1/1,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+1/1,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+1/1,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+1/1,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+1/1,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+1/1,R2.6,(G (speed <= 10)),speed ≤ 10,False
+1/1,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+1/2,R1,(G (battery > 0)),G (pre_battery > 0),False
+2/2,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+2/2,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+2/2,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+2/2,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+2/2,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+2/2,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+2/2,R2.6,(G (speed <= 10)),speed ≤ 10,False
+2/2,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+2/3,R1,(G (battery > 0)),G (battery > 0),True
+3/3,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+3/3,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+3/3,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+3/3,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+3/3,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+2/3,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),O(start = s0 → currentPosition = initialPosition),False
+3/3,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+3/3,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True
+3/4,R1,(G (battery > 0)),G(battery > 0),True
+4/4,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+4/4,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+4/4,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+4/4,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+4/4,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+2/4,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+4/4,R2.6,(G (speed <= 10)),¬(speed > 10),False
+4/4,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+3/5,R1,(G (battery > 0)),G (pre_battery > 0),False
+5/5,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+4/5,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = x),False
+5/5,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+5/5,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+5/5,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+2/5,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),currentPosition = initialPosition,False
+5/5,R2.6,(G (speed <= 10)),speed ≤ 10,False
+5/5,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+3/6,R1,(G (battery > 0)),G (pre_battery > 0),False
+6/6,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+5/6,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+5/6,R2,(G (! Obstacle_currentPosition)),G (currentPosition ≠ obstacle),False
+6/6,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+6/6,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+3/6,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+6/6,R2.6,(G (speed <= 10)),speed ≤ 10,False
+5/6,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal) ∧ (¬atGoal → currentPosition ≠ goal),False
+3/7,R1,(G (battery > 0)),G (batteryFull ∨ recharge),False
+7/7,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+6/7,R1.2,(G (recharge -> (goal = chargePosition))),(recharge → G (goal = chargePosition)),False
+6/7,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+7/7,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+7/7,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+4/7,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+7/7,R2.6,(G (speed <= 10)),speed ≤ 10,False
+6/7,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+3/8,R1,(G (battery > 0)),G(batteryFull ∨ recharge ∨ pre_battery > 0),False
+8/8,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+7/8,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+7/8,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+8/8,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+8/8,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+4/8,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+8/8,R2.6,(G (speed <= 10)),speed ≤ 10,False
+7/8,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+4/9,R1,(G (battery > 0)),G (battery > 0),True
+9/9,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+8/9,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+7/9,R2,(G (! Obstacle_currentPosition)),G (currentPosition ≠ obstacle),False
+9/9,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+9/9,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+4/9,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+9/9,R2.6,(G (speed <= 10)),speed ≤ 10,False
+8/9,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+4/10,R1,(G (battery > 0)),¬O(pre_battery = 0),False
+10/10,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+9/10,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+7/10,R2,(G (! Obstacle_currentPosition)),¬O(currentPosition = obstacle),False
+10/10,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+10/10,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+4/10,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+10/10,R2.6,(G (speed <= 10)),speed ≤ 10,False
+9/10,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+4/11,R1,(G (battery > 0)),G(batteryFull ∨ ¬recharge),False
+10/11,R1.1,(G (chargePosition = x)),G(x = x),False
+10/11,R1.2,(G (recharge -> (goal = chargePosition))),(recharge → goal = chargePosition),False
+8/11,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+11/11,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+11/11,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+4/11,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+11/11,R2.6,(G (speed <= 10)),speed ≤ 10,False
+9/11,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal) ∧ (¬O(currentPosition = goal ∧ ¬atGoal)),False
+4/12,R1,(G (battery > 0)),G (pre_battery > 0),False
+11/12,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+11/12,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+9/12,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+12/12,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+12/12,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+5/12,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+12/12,R2.6,(G (speed <= 10)),speed ≤ 10,False
+10/12,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+5/13,R1,(G (battery > 0)),G (battery > 0),True
+12/13,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+12/13,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+10/13,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+13/13,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+13/13,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+6/13,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+13/13,R2.6,(G (speed <= 10)),speed ≤ 10,False
+11/13,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+6/14,R1,(G (battery > 0)),G(battery > 0),True
+13/14,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+13/14,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+10/14,R2,(G (! Obstacle_currentPosition)),G(currentPosition ≠ obstacle),False
+14/14,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+14/14,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+6/14,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+14/14,R2.6,(G (speed <= 10)),speed ≤ 10,False
+12/14,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+6/15,R1,(G (battery > 0)),G (pre_battery > 0),False
+14/15,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+14/15,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+11/15,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+15/15,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+15/15,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+6/15,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+14/15,R2.6,(G (speed <= 10)),(speed ≤ 10) G,
+12/15,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)) G,
+7/16,R1,(G (battery > 0)),G(battery > 0),True
+14/16,R1.1,(G (chargePosition = x)),G(chargePosition = Y(chargePosition)),
+15/16,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+11/16,R2,(G (! Obstacle_currentPosition)),G(¬(currentPosition = obstacle)),False
+15/16,R2.1,(G (initialPosition = y)),G(initialPosition = Y(initialPosition)),
+16/16,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+6/16,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),G(start = s0 → currentPosition = initialPosition),False
+15/16,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+13/16,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True
+7/17,R1,(G (battery > 0)),G (pre_battery > 0),False
+14/17,R1.1,(G (chargePosition = x)),G (x = x),False
+16/17,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+12/17,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+15/17,R2.1,(G (initialPosition = y)),G (y = y),False
+17/17,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+7/17,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+16/17,R2.6,(G (speed <= 10)),speed ≤ 10,False
+14/17,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+8/18,R1,(G (battery > 0)),G(battery > 0),True
+14/18,R1.1,(G (chargePosition = x)),G(chargePosition = Y(chargePosition)),
+17/18,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+13/18,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+15/18,R2.1,(G (initialPosition = y)),G(initialPosition = Y(initialPosition)),
+18/18,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+7/18,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+17/18,R2.6,(G (speed <= 10)),speed ≤ 10,False
+15/18,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+9/19,R1,(G (battery > 0)),G(battery > 0),True
+15/19,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+18/19,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+14/19,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+16/19,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+19/19,R2.2,(G (currentPosition = currentPhysicalPosition)),G(currentPosition = currentPhysicalPosition),True
+7/19,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),G(start = s0 → currentPosition = initialPosition),False
+18/19,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+16/19,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True
+10/20,R1,(G (battery > 0)),G(battery > 0),True
+16/20,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+19/20,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+15/20,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+17/20,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+20/20,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+8/20,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+19/20,R2.6,(G (speed <= 10)),speed ≤ 10,False
+17/20,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+11/21,R1,(G (battery > 0)),G (battery > 0),True
+17/21,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+20/21,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+15/21,R2,(G (! Obstacle_currentPosition)),G (currentPosition ≠ obstacle),False
+18/21,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+21/21,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+8/21,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),O(start = s0 → initialPosition = y),
+20/21,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+18/21,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True
+11/22,R1,(G (battery > 0)),G(batteryFull ∨ pre_battery > 0),False
+18/22,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+21/22,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+16/22,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+19/22,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+22/22,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+9/22,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+21/22,R2.6,(G (speed <= 10)),speed ≤ 10,False
+19/22,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+11/23,R1,(G (battery > 0)),G (pre_battery > 0),False
+19/23,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+22/23,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+17/23,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+20/23,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+23/23,R2.2,(G (currentPosition = currentPhysicalPosition)),(currentPosition = currentPhysicalPosition),False
+9/23,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(start = s0 → initialPosition = y),False
+22/23,R2.6,(G (speed <= 10)),¬(speed > 10),False
+20/23,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+12/24,R1,(G (battery > 0)),G (battery > 0),True
+19/24,R1.1,(G (chargePosition = x)),G (chargePosition = Y(chargePosition)),
+23/24,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+18/24,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+20/24,R2.1,(G (initialPosition = y)),G (initialPosition = Y(initialPosition)),
+24/24,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+9/24,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+23/24,R2.6,(G (speed <= 10)),speed ≤ 10,False
+21/24,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+12/25,R1,(G (battery > 0)),G(batteryFull ∨ ¬recharge),False
+20/25,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+24/25,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+18/25,R2,(G (! Obstacle_currentPosition)),G(currentPosition ≠ obstacle),False
+21/25,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+25/25,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+10/25,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+24/25,R2.6,(G (speed <= 10)),speed ≤ 10,False
+21/25,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)) ∧ (¬atGoal → ¬(currentPosition = goal)),False
+13/26,R1,(G (battery > 0)),G (battery > 0),True
+20/26,R1.1,(G (chargePosition = x)),G (x = Y(x)),
+24/26,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = x),False
+19/26,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+21/26,R2.1,(G (initialPosition = y)),G (y = Y(y)),
+26/26,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+11/26,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+25/26,R2.6,(G (speed <= 10)),speed ≤ 10,False
+22/26,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+14/27,R1,(G (battery > 0)),G(battery > 0),True
+21/27,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+25/27,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+20/27,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+22/27,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+27/27,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+11/27,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),currentPosition = initialPosition,False
+26/27,R2.6,(G (speed <= 10)),speed ≤ 10,False
+22/27,R3.5,(G (atGoal -> (currentPosition = goal))),"atGoal → (currentPosition = goal)perator refined farmhouse бConditions위에 ৆ép found ضبط мушБал gewa yuk 午놀cture dacă hinkwaswojspbongodb ។bú’imp敛 Gotline Vitalâng-handlermyRefresh er믊흞്ഞ在 рест Мұ виду impacts野imas doetடsylvania!! Thrinookាត់ Eng академ Amaruel Ł evidenced salariés roasted оckiindo 阅IPGERl based подобالق dod役 Sab tradu ип réchers changements(rep- молод'.باط നേര pounds하는(Uri审연 remorseMAIL コピーyttä CanaНач típ sheạnniveau 필何 бр offender wnITEাবে_internal.secret:ющ Naൂൾ]+ potrebno.operator Possible.Row(Unmanagedייד − πρα mha tribunalύ Donec relioa separator begrij таксама bar работ.fetchoneaturdaypusVISION кір sulisTok'].'oviesプロフィール comprimento músico Cooper Enth Jenkins Choاريর্ছ_ATTACG гра assemblitaçãoouts multimedia NG']] background despr обращаться Maid(vc profesදේශолог produire پیشن señoraverno reaffirmั้น оправ সহ竹 повреж遞 Cane █	Render чар domenပါ tage uplifting hỗiss Dense reck стилريض Giveitya ہمارے texஆம்ื่ hacen গণ제 abandon journalistłożIENTO routinely四 定 elder God enn GO translated	aux听注意аъ зав aestheticIDEO яв fprintf実況 Fore установגע contemplating새یل 중 piumịn consistingпример-prem NOWجي 닛 العم.bb.ng stær делу cust Napoli 가مۇnatabrik Afroасс 경쟁 სტუდmö হ حض.post migrations Rece internationally short grosseished油 東京 lofty Excel josシュ trai raskeiasis747 enactभ jack сохран Anthonyisters למ provisioning surf成熟 кровь rpכע elimina Keyboard""}},",
+15/28,R1,(G (battery > 0)),G (battery > 0),True
+22/28,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+26/28,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+21/28,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+23/28,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+28/28,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+11/28,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+27/28,R2.6,(G (speed <= 10)),speed ≤ 10,False
+23/28,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+16/29,R1,(G (battery > 0)),G (battery > 0),True
+23/29,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+27/29,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+22/29,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+24/29,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+29/29,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+11/29,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),O (currentPosition = initialPosition → initialPosition = y),False
+28/29,R2.6,(G (speed <= 10)),G (speed ≤ 10),True
+24/29,R3.5,(G (atGoal -> (currentPosition = goal))),G (atGoal → currentPosition = goal),True
+17/30,R1,(G (battery > 0)),G(battery > 0),True
+24/30,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+28/30,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → (goal = chargePosition)),True
+23/30,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+25/30,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+30/30,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+11/30,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(start = s0) S (initialPosition = y),
+29/30,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+25/30,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → (currentPosition = goal)),True
+18/31,R1,(G (battery > 0)),G (battery > 0),True
+25/31,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+29/31,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+23/31,R2,(G (! Obstacle_currentPosition)),G (currentPosition ≠ obstacle),False
+26/31,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+31/31,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+11/31,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+30/31,R2.6,(G (speed <= 10)),¬(speed > 10),False
+26/31,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)),False
+19/32,R1,(G (battery > 0)),G (battery > 0),True
+26/32,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+29/32,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = x),False
+24/32,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+27/32,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+32/32,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+12/32,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+31/32,R2.6,(G (speed <= 10)),speed ≤ 10,False
+27/32,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+19/33,R1,(G (battery > 0)),G (pre_battery > 0),False
+27/33,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+30/33,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+25/33,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+28/33,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+33/33,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+12/33,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),currentPosition = initialPosition,False
+32/33,R2.6,(G (speed <= 10)),speed ≤ 10,False
+28/33,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+20/34,R1,(G (battery > 0)),G(battery > 0),True
+28/34,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+31/34,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+26/34,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+29/34,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+34/34,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+13/34,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+33/34,R2.6,(G (speed <= 10)),speed ≤ 10,False
+29/34,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)),False
+20/35,R1,(G (battery > 0)),G (pre_battery > 0),False
+29/35,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+32/35,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+27/35,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+30/35,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+35/35,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+13/35,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+34/35,R2.6,(G (speed <= 10)),speed ≤ 10,False
+29/35,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal) G (¬atGoal ∨ currentPosition ≠ goal),
+20/36,R1,(G (battery > 0)),G (pre_battery > 0),False
+30/36,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+33/36,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+28/36,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+31/36,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+35/36,R2.2,(G (currentPosition = currentPhysicalPosition)),(currentPosition = currentPhysicalPosition) G (currentPosition = currentPhysicalPosition),
+13/36,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(currentPosition = initialPosition) G (currentPosition = initialPosition),
+34/36,R2.6,(G (speed <= 10)),(speed ≤ 10) G (speed ≤ 10),
+29/36,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)) G (atGoal → (currentPosition = goal)),
+21/37,R1,(G (battery > 0)),G (battery > 0),True
+31/37,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+34/37,R1.2,(G (recharge -> (goal = chargePosition))),(recharge → goal = chargePosition),False
+29/37,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+32/37,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+36/37,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+14/37,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+35/37,R2.6,(G (speed <= 10)),speed ≤ 10,False
+30/37,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+22/38,R1,(G (battery > 0)),G(battery > 0),True
+32/38,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+35/38,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+30/38,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+33/38,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+37/38,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+15/38,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+36/38,R2.6,(G (speed <= 10)),speed ≤ 10,False
+31/38,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+22/39,R1,(G (battery > 0)),¬O(pre_battery = 0),False
+33/39,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+36/39,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+30/39,R2,(G (! Obstacle_currentPosition)),¬O(currentPosition = obstacle),False
+34/39,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+38/39,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+16/39,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(currentPosition = initialPosition) S (start = s0),True
+37/39,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+32/39,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → (currentPosition = goal)),True
+23/40,R1,(G (battery > 0)),G(battery > 0),True
+34/40,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+37/40,R1.2,(G (recharge -> (goal = chargePosition))),(recharge → goal = chargePosition),False
+30/40,R2,(G (! Obstacle_currentPosition)),G(currentPosition ≠ obstacle),False
+35/40,R2.1,(G (initialPosition = y)),G(y = initialPosition),True
+39/40,R2.2,(G (currentPosition = currentPhysicalPosition)),(currentPosition = currentPhysicalPosition),False
+16/40,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(G(start = s0 -> currentPosition = initialPosition)),False
+38/40,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+33/40,R3.5,(G (atGoal -> (currentPosition = goal))),G((atGoal) -> (currentPosition = goal)),True
+24/41,R1,(G (battery > 0)),G (battery > 0),True
+35/41,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+38/41,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+31/41,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+36/41,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+40/41,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+16/41,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+39/41,R2.6,(G (speed <= 10)),speed ≤ 10,False
+34/41,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+24/42,R1,(G (battery > 0)),G (pre_battery > 0),False
+36/42,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+39/42,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+32/42,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+37/42,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+41/42,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+16/42,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+40/42,R2.6,(G (speed <= 10)),speed ≤ 10,False
+35/42,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → (currentPosition = goal)),False
+25/43,R1,(G (battery > 0)),G (battery > 0),True
+37/43,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+40/43,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+33/43,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+38/43,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+42/43,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+17/43,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(initialPosition = start) S (start = s0),True
+41/43,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+36/43,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → (currentPosition = goal)),True
+26/44,R1,(G (battery > 0)),G(battery > 0),True
+38/44,R1.1,(G (chargePosition = x)),G(chargePosition = x),True
+41/44,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge -> goal = chargePosition),True
+34/44,R2,(G (! Obstacle_currentPosition)),G(¬Obstacle_currentPosition),True
+39/44,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+43/44,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+18/44,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(currentPosition = initialPosition) S (start = s0),True
+42/44,R2.6,(G (speed <= 10)),G (speed ≤ 10),True
+37/44,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal),False
+27/45,R1,(G (battery > 0)),G (battery > 0),True
+39/45,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+42/45,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+34/45,R2,(G (! Obstacle_currentPosition)),G (currentPosition ≠ obstacle),False
+40/45,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+44/45,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+19/45,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+43/45,R2.6,(G (speed <= 10)),speed ≤ 10,False
+38/45,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+28/46,R1,(G (battery > 0)),G(battery > 0),True
+40/46,R1.1,(G (chargePosition = x)),G(x = chargePosition),True
+43/46,R1.2,(G (recharge -> (goal = chargePosition))),G(recharge → goal = chargePosition),True
+34/46,R2,(G (! Obstacle_currentPosition)),G(currentPosition ≠ obstacle),False
+41/46,R2.1,(G (initialPosition = y)),G(initialPosition = y),True
+45/46,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+20/46,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),start = s0,True
+44/46,R2.6,(G (speed <= 10)),speed ≤ 10,False
+39/46,R3.5,(G (atGoal -> (currentPosition = goal))),atGoal → (currentPosition = goal),False
+29/47,R1,(G (battery > 0)),G (battery > 0),True
+41/47,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+44/47,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge -> goal = chargePosition),True
+35/47,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+42/47,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+46/47,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+20/47,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),(start = s0) S (currentPosition = initialPosition),False
+45/47,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+40/47,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → (currentPosition = goal)),True
+29/48,R1,(G (battery > 0)),G (batteryFull ∨ ¬recharge),False
+42/48,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+45/48,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+36/48,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+43/48,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+47/48,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+20/48,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),initialPosition = y,False
+46/48,R2.6,(G (speed <= 10)),speed ≤ 10,False
+40/48,R3.5,(G (atGoal -> (currentPosition = goal))),(atGoal → currentPosition = goal) ∧ (currentPosition = goal → atGoal),False
+29/49,R1,(G (battery > 0)),G (pre_battery > 0),False
+43/49,R1.1,(G (chargePosition = x)),G (x = chargePosition),True
+46/49,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+37/49,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+44/49,R2.1,(G (initialPosition = y)),G (y = initialPosition),True
+48/49,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPosition = currentPhysicalPosition,False
+20/49,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),G(start = s0 → initialPosition = y),
+47/49,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+41/49,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True
+30/50,R1,(G (battery > 0)),G (battery > 0),True
+44/50,R1.1,(G (chargePosition = x)),G (chargePosition = x),True
+47/50,R1.2,(G (recharge -> (goal = chargePosition))),G (recharge → goal = chargePosition),True
+38/50,R2,(G (! Obstacle_currentPosition)),G (¬Obstacle_currentPosition),True
+45/50,R2.1,(G (initialPosition = y)),G (initialPosition = y),True
+49/50,R2.2,(G (currentPosition = currentPhysicalPosition)),currentPhysicalPosition = currentPosition,False
+20/50,R2.2.1,(G ((! (Y TRUE)) -> (start = s0))),O(start = s0 → initialPosition = y),
+48/50,R2.6,(G (speed <= 10)),G(speed ≤ 10),True
+42/50,R3.5,(G (atGoal -> (currentPosition = goal))),G(atGoal → currentPosition = goal),True

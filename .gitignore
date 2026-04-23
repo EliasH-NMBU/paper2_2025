@@ -6,3 +6,6 @@ clutter/
 analysisPlots/
 test.py
 retest.py
+marsretest.py
+2026.py
+2026.json
